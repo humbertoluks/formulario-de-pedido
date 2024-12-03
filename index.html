@@ -92,6 +92,7 @@
                 name="countries"
                 id="countries"
                 aria-label="pais"
+                v-model="country"
               >
                 <option disabled selected>Escolha ...</option>
                 <option value="BR">Brasil</option>
@@ -106,6 +107,7 @@
                 id="states"
                 name="states"
                 aria-label="estado"
+                v-model="state"
               >
                 <option disabled selected>Escolha ...</option>
                 <option value="RJ">Rio de Janeiro (RJ)</option>
@@ -234,6 +236,8 @@
             message: "mensagem OK",
             billAddress: false,
             payment: "",
+            country: "",
+            state: "",
           };
         },
         methods: {
