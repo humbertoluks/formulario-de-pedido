@@ -197,6 +197,7 @@
               rows="4"
               placeholder="Escreva sua mensagem aqui..."
               aria-label="mensagem"
+              v-model="message"
             ></textarea>
           </div>
 
@@ -226,6 +227,7 @@
             email: "Luks@gmail.com",
             address: "Rua Anita Garibaldi, 26",
             zipCode: "09560250",
+            message: "mensagem OK",
           };
         },
         methods: {
