@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <title>Curso VueJS - Formulário de pedido</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container my-5">
+        <h4 class="mb-3">Formulário de pedido</h4>
+        <form action="#" method="POST">
+          <!-- Campo Honeypot -->
+          <input
+            type="text"
+            name="honeypot"
+            style="display: none"
+            tabindex="-1"
+          />
+
+          <!-- Informações Pessoais -->
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="name" class="form-label">Primeiro nome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Digite seu nome"
+                required
+                aria-label="primeiro nome"
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="lastname" class="form-label">sobrenome</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastname"
+                placeholder="Digite seu sobrenome"
+                required
+                aria-label="sobrenome"
+              />
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="seuemail@exemplo.com"
+              required
+              aria-label="email"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="address" class="form-label">Endereço</label>
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Ex: Rua das Flores, 123, Centro"
+              required
+              aria-label="endereço"
+            />
+          </div>
+
+          <div class="row">
+            <div class="col-md-5 mb-3">
+              <label for="countries" class="form-label">Escolha um Pais</label>
+              <select
+                class="custom-select d-block w-100"
+                name="countries"
+                id="countries"
+                aria-label="pais"
+              >
+                <option disabled selected>Escolha ...</option>
+                <option value="BR">Brasil</option>
+                <option value="US">Estados Unidos</option>
+              </select>
+            </div>
+
+            <div class="col-md-4 mb-3">
+              <label for="states" class="form-label">Escolha um estado</label>
+              <select
+                class="custom-select d-block w-100"
+                id="states"
+                name="states"
+                aria-label="estado"
+              >
+                <option disabled selected>Escolha ...</option>
+                <option value="RJ">Rio de Janeiro (RJ)</option>
+                <option value="SP">São Paulo (SP)</option>
+              </select>
+            </div>
+
+            <div class="col-md-3 mb-3">
+              <label for="cep" class="form-label">CEP</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cep"
+                placeholder="00000-000"
+                pattern="\d{5}-?\d{3}"
+                aria-label="cep"
+              />
+            </div>
+          </div>
+
+          <hr class="mb-4" />
+
+          <div class="custom-control custom-checkbox">
+            <input
+              type="checkbox"
+              class="custom-control-input"
+              name="sameaddress"
+              id="sameaddress"
+              aria-label="mesmo endereço de cobrança"
+            />
+            <label for="sameaddress" class="custom-control-label"
+              >O endereço de entrega é igual ao meu endereço de cobrança</label
+            >
+          </div>
+
+          <hr class="mb-4" />
+
+          <!-- Pagamento -->
+          <h4 class="mb-3">Pagamento</h4>
+
+          <div class="custom-control custom-radio">
+            <input
+              type="radio"
+              name="paymentMethod"
+              class="custom-control-input"
+              id="debit"
+              value="debit"
+              checked
+              required
+              aria-label="debito"
+            />
+            <label for="debit" class="custom-control-label">Débito</label><br />
+          </div>
+          <div class="custom-control custom-radio">
+            <input
+              type="radio"
+              name="paymentMethod"
+              class="custom-control-input"
+              id="credit"
+              value="credit"
+              aria-label="credito"
+            />
+            <label for="credit" class="custom-control-label">Crédito</label
+            ><br />
+          </div>
+          <div class="custom-control custom-radio">
+            <input
+              type="radio"
+              name="paymentMethod"
+              class="custom-control-input"
+              id="paypal"
+              value="paypal"
+              aria-label="paypal"
+            />
+            <label for="paypal" class="custom-control-label">PayPal</label>
+          </div>
+
+          <hr class="mb-4" />
+
+          <!-- Mensagem -->
+          <h4 class="mb-3">Mensagem</h4>
+
+          <div class="mb-3">
+            <textarea
+              name="message"
+              class="form-control"
+              id="message"
+              rows="4"
+              placeholder="Escreva sua mensagem aqui..."
+              aria-label="mensagem"
+            ></textarea>
+          </div>
+
+          <hr class="mb-4" />
+
+          <!-- Botão de Envio -->
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg btn-block"
+            aria-label="Enviar Pedido"
+          >
+            Enviar Pedido
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Script do JavaScript do VueJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {};
+        },
+      }).mount("#app");
+    </script>
+
+    <!-- Script do JavaScript do Bootstrap -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
