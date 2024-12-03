@@ -28,18 +28,19 @@
           <!-- Informações Pessoais -->
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="name" class="form-label">Primeiro nome</label>
+              <label for="fisrtname" class="form-label">Primeiro nome</label>
               <input
                 type="text"
                 class="form-control"
-                id="name"
+                id="firstname"
                 placeholder="Digite seu nome"
                 required
                 aria-label="primeiro nome"
+                v-model="firstName"
               />
             </div>
             <div class="col-md-6 mb-3">
-              <label for="lastname" class="form-label">sobrenome</label>
+              <label for="lastname" class="form-label">Sobrenome</label>
               <input
                 type="text"
                 class="form-control"
@@ -47,20 +48,27 @@
                 placeholder="Digite seu sobrenome"
                 required
                 aria-label="sobrenome"
+                v-model="lastName"
               />
             </div>
           </div>
 
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="seuemail@exemplo.com"
-              required
-              aria-label="email"
-            />
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"> @ </span>
+              </div>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="seuemail@exemplo.com"
+                required
+                aria-label="email"
+                v-model="email"
+              />
+            </div>
           </div>
 
           <div class="mb-3">
@@ -72,6 +80,7 @@
               placeholder="Ex: Rua das Flores, 123, Centro"
               required
               aria-label="endereço"
+              v-model="address"
             />
           </div>
 
@@ -113,6 +122,7 @@
                 placeholder="00000-000"
                 pattern="\d{5}-?\d{3}"
                 aria-label="cep"
+                v-model="zipCode"
               />
             </div>
           </div>
@@ -197,6 +207,7 @@
             type="submit"
             class="btn btn-primary btn-lg btn-block"
             aria-label="Enviar Pedido"
+            @click="submitForm"
           >
             Enviar Pedido
           </button>
@@ -209,7 +220,51 @@
     <script>
       const app = Vue.createApp({
         data() {
-          return {};
+          return {
+            firstName: "Humberto",
+            lastName: "Luks",
+            email: "Luks@gmail.com",
+            address: "Rua Anita Garibaldi, 26",
+            zipCode: "09560250",
+          };
+        },
+        methods: {
+          validateForm() {
+            if (this.firstName.trim() === "") {
+              alert("Por favor, preencha o campo Primeiro Nome.");
+              return false;
+            }
+            if (this.lastName.trim() === "") {
+              alert("Por favor, preencha o campo Sobrenome.");
+              return false;
+            }
+            if (this.email.trim() === "" || !this.validateEmail(this.email)) {
+              alert("Por favor, insira um e-mail válido.");
+              return false;
+            }
+            if (
+              this.zipCode.trim() === "" ||
+              !/^\d{5}-?\d{3}$/.test(this.zipCode)
+            ) {
+              alert("Por favor, insira um CEP válido.");
+              return false;
+            }
+            if (this.address.trim() === "") {
+              alert("Por favor, preencha o campo Endereço.");
+              return false;
+            }
+            return true;
+          },
+          validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+          },
+          submitForm(event) {
+            event.preventDefault(); // Evita envio automático
+            if (this.validateForm()) {
+              alert("Formulário enviado com sucesso!");
+            }
+          },
         },
       }).mount("#app");
     </script>
