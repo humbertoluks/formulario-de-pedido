@@ -158,6 +158,7 @@
               checked
               required
               aria-label="debito"
+              v-model="payment"
             />
             <label for="debit" class="custom-control-label">Débito</label><br />
           </div>
@@ -169,6 +170,7 @@
               id="credit"
               value="credit"
               aria-label="credito"
+              v-model="payment"
             />
             <label for="credit" class="custom-control-label">Crédito</label
             ><br />
@@ -181,6 +183,7 @@
               id="paypal"
               value="paypal"
               aria-label="paypal"
+              v-model="payment"
             />
             <label for="paypal" class="custom-control-label">PayPal</label>
           </div>
@@ -230,6 +233,7 @@
             zipCode: "09560250",
             message: "mensagem OK",
             billAddress: false,
+            payment: "",
           };
         },
         methods: {
