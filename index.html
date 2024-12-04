@@ -30,25 +30,25 @@
             <div class="col-md-6 mb-3">
               <label for="fisrtname" class="form-label">Primeiro nome</label>
               <input
+                v-model.lazy="firstName"
                 type="text"
                 class="form-control"
                 id="firstname"
                 placeholder="Digite seu nome"
                 required
                 aria-label="primeiro nome"
-                v-model="firstName"
               />
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastname" class="form-label">Sobrenome</label>
               <input
+                v-model.trim="lastName"
                 type="text"
                 class="form-control"
                 id="lastname"
                 placeholder="Digite seu sobrenome"
                 required
                 aria-label="sobrenome"
-                v-model="lastName"
               />
             </div>
           </div>
@@ -60,13 +60,13 @@
                 <span class="input-group-text"> @ </span>
               </div>
               <input
+                v-model="email"
                 type="email"
                 class="form-control"
                 id="email"
                 placeholder="seuemail@exemplo.com"
                 required
                 aria-label="email"
-                v-model="email"
               />
             </div>
           </div>
@@ -74,13 +74,13 @@
           <div class="mb-3">
             <label for="address" class="form-label">Endereço</label>
             <input
+              v-model="address"
               type="text"
               class="form-control"
               id="address"
               placeholder="Ex: Rua das Flores, 123, Centro"
               required
               aria-label="endereço"
-              v-model="address"
             />
           </div>
 
@@ -88,11 +88,11 @@
             <div class="col-md-5 mb-3">
               <label for="countries" class="form-label">Escolha um Pais</label>
               <select
+                v-model="country"
                 class="custom-select d-block w-100"
                 name="countries"
                 id="countries"
                 aria-label="pais"
-                v-model="country"
               >
                 <option disabled selected>Escolha ...</option>
                 <option value="BR">Brasil</option>
@@ -103,11 +103,11 @@
             <div class="col-md-4 mb-3">
               <label for="states" class="form-label">Escolha um estado</label>
               <select
+                v-model="state"
                 class="custom-select d-block w-100"
                 id="states"
                 name="states"
                 aria-label="estado"
-                v-model="state"
               >
                 <option disabled selected>Escolha ...</option>
                 <option value="RJ">Rio de Janeiro (RJ)</option>
@@ -118,13 +118,13 @@
             <div class="col-md-3 mb-3">
               <label for="cep" class="form-label">CEP</label>
               <input
+                v-model="zipCode"
                 type="text"
                 class="form-control"
                 id="cep"
                 placeholder="00000-000"
                 pattern="\d{5}-?\d{3}"
                 aria-label="cep"
-                v-model="zipCode"
               />
             </div>
           </div>
@@ -133,12 +133,12 @@
 
           <div class="custom-control custom-checkbox">
             <input
+              v-model="billAddress"
               type="checkbox"
               class="custom-control-input"
               name="billaddress"
               id="billaddress"
               aria-label="mesmo endereço de cobrança"
-              v-model="billAddress"
             />
             <label for="billaddress" class="custom-control-label"
               >O endereço de entrega é igual ao meu endereço de cobrança</label
@@ -152,6 +152,7 @@
 
           <div class="custom-control custom-radio">
             <input
+              v-model="payment"
               type="radio"
               name="paymentMethod"
               class="custom-control-input"
@@ -160,32 +161,31 @@
               checked
               required
               aria-label="debito"
-              v-model="payment"
             />
             <label for="debit" class="custom-control-label">Débito</label><br />
           </div>
           <div class="custom-control custom-radio">
             <input
+              v-model="payment"
               type="radio"
               name="paymentMethod"
               class="custom-control-input"
               id="credit"
               value="credit"
               aria-label="credito"
-              v-model="payment"
             />
             <label for="credit" class="custom-control-label">Crédito</label
             ><br />
           </div>
           <div class="custom-control custom-radio">
             <input
+              v-model="payment"
               type="radio"
               name="paymentMethod"
               class="custom-control-input"
               id="paypal"
               value="paypal"
               aria-label="paypal"
-              v-model="payment"
             />
             <label for="paypal" class="custom-control-label">PayPal</label>
           </div>
@@ -197,13 +197,13 @@
 
           <div class="mb-3">
             <textarea
+              v-model="message"
               name="message"
               class="form-control"
               id="message"
               rows="4"
               placeholder="Escreva sua mensagem aqui..."
               aria-label="mensagem"
-              v-model="message"
             ></textarea>
           </div>
 
@@ -211,10 +211,10 @@
 
           <!-- Botão de Envio -->
           <button
+            @click="submitForm"
             type="submit"
             class="btn btn-primary btn-lg btn-block"
             aria-label="Enviar Pedido"
-            @click="submitForm"
           >
             Enviar Pedido
           </button>
